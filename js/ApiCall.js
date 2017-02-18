@@ -1,5 +1,5 @@
 //Todo : localStorage
-class Init {
+class ApiCall {
 
     constructor () {
         this.url = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY';
