@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Test API</title>
 </head>
@@ -22,6 +23,9 @@
     </div>
 
     <div id="modal">
+        <div id="modal-icon">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
         <div id="modal-img">
         </div>
         <div id="modal-txt">
@@ -30,9 +34,9 @@
 
 </div>
 <script
-    src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-    crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
 <script src="lib/imagesloaded.pkgd.min.js"></script>
 <script src="lib/masonry.pkgd.min.js"></script>
 <script src="lib/init.js"></script>
@@ -45,6 +49,13 @@
     $(document).on("click", '.item', function(e) {
         let image = new Image(e.currentTarget);
         image.getImage();
+        $('body').addClass('noscroll');
+    });
+    $(document).on('click', '#modal-icon', function () {
+        $('#modal').hide();
+        $('#modal-img').html('');
+        $('#modal-txt').html('');
+        $('body').remove('noscroll');
     });
 </script>
 </body>

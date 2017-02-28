@@ -1,14 +1,22 @@
 /* Nasa Picture of the Day - 1.0 - January 2017 */
 /**
- * 0. SASS VARIABLES
+ * 0. VARIABLES AND KEYFRAMES
  * 1. GENERAL
  * 2. BLOCKS
  * 3. ELEMENTS
  */
-/** === 0. SASS VARIABLES === */
+/** === 0. VARIABLES AND KEYFRAMES === */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
 /** === 1. GENERAL === */
 * {
   box-sizing: border-box; }
+
+html, body {
+  height: 100%; }
 
 body {
   background-color: #222;
@@ -32,6 +40,12 @@ img {
   width: auto;
   max-width: 100%; }
 
+.noscroll {
+  overflow: hidden; }
+
+.text-right {
+  text-align: right; }
+
 /** === 2. BLOCKS === */
 #grid {
   max-width: 85%;
@@ -49,14 +63,24 @@ img {
     cursor: pointer; }
 
 #modal {
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 0;
   left: 0;
   padding: 35px;
   background-color: #222;
+  display: none;
+  height: 100vh;
   width: 100%;
-  display: none; }
+  overflow-y: scroll; }
+  #modal #modal-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.2);
+    cursor: pointer; }
+    #modal #modal-icon:hover {
+      color: rgba(255, 255, 255, 0.5); }
   #modal #modal-img {
     display: inline-block;
     width: 65%; }
@@ -71,18 +95,13 @@ img {
   width: 100%;
   text-align: center; }
   .loader-content #loader {
-    border: 8px solid #777;
-    border-top: 8px solid #88cc00;
+    border-style: solid;
+    border-width: 8px;
+    border-color: #88cc00 #777 #777;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     animation: spin 3s linear infinite;
     display: none; }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
 
 /*# sourceMappingURL=style.css.map */

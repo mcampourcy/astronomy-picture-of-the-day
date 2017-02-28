@@ -36,11 +36,18 @@ class Image extends ApiCall {
 
         let h2 = document.createElement('h2');
         let p = document.createElement('p');
+        let pLink = document.createElement('p');
+        let a = document.createElement('a');
         h2.innerHTML = this.image.title;
         p.innerHTML = this.image.explanation;
+        pLink.className = 'text-right';
+        a.setAttribute('href', this.image.hdurl);
+        a.innerHTML = "Télécharger l'image en HD";
 
         modalText.appendChild(h2);
         modalText.appendChild(p);
+        modalText.appendChild(pLink);
+        pLink.appendChild(a);
 
     }
 
