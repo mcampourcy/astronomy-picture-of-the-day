@@ -1,12 +1,24 @@
+/**
+ * Image class
+ * Set up the modal with one image and his description
+ * @extends ApiCall
+ */
 class Image extends ApiCall {
 
-    constructor (e) {
+    /**
+     * Image constructor
+     * @param   image   HTML element for image
+     */
+    constructor (image) {
         super();
-        this.dateYearMonthDay = e.getAttribute('data-id');
+        this.dateYearMonthDay = image.getAttribute('data-id');
         this.urlWithDate = `${this.url}&date=${this.dateYearMonthDay}`;
         this.image = {};
     }
 
+    /**
+     * API call to get the image data
+     */
     getImage () {
         this.ajaxCall ({
             url: this.urlWithDate,
@@ -23,6 +35,9 @@ class Image extends ApiCall {
         );
     }
 
+    /**
+     * Build the HTML for the modal
+     */
     showImage () {
 
         let modal = document.getElementById('modal');

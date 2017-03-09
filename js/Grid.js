@@ -1,5 +1,13 @@
+/**
+ * Grid Class
+ * Construct the masonry grid with images
+ * @extends ApiCall
+ */
 class Grid extends ApiCall {
 
+    /**
+     * Grid constructor
+     */
     constructor () {
         super();
         this.date = new Date();
@@ -8,11 +16,16 @@ class Grid extends ApiCall {
         this.images = [];
     }
 
+    /**
+     * For each last 10 days, make an call to the API and add an image to the grid
+     */
     buildGrid () {
 
         this.loader.style.display = 'inline-block';
+
         for (let ii = 0; ii <= 10; ii++) {
 
+            // Set the API url with a date among last 10 days
             this.dateYearMonthDay = this.date.toISOString().substring(0, 10);
             let urlWithDate = `${this.url}&date=${this.dateYearMonthDay}`;
 
@@ -39,7 +52,10 @@ class Grid extends ApiCall {
 
     }
 
-    addMedia (date) {
+    /**
+     * Add an image to the masonry grid
+     */
+    addMedia () {
 
         for (let image of this.images) {
 
@@ -53,7 +69,7 @@ class Grid extends ApiCall {
                 img.setAttribute('data-id', image.date);
                 div.appendChild(img);
 
-                //add elements to masonry grid
+                //  Add elements to masonry grid
                 var $el = $(div);
                 $grid.append($el).imagesLoaded(function(){
                     $grid.masonry( 'appended', $el, true );
