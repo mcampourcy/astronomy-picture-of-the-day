@@ -14,9 +14,9 @@ $color2: #88cc00
 $color3: #777
 
 @keyframes spin
-  0%
+  from
     transform: rotate(0deg)
-  100%
+  to
     transform: rotate(360deg)
 
 /** === 1. GENERAL === **/
@@ -48,6 +48,14 @@ img
   height: auto
   width: auto
   max-width: 100%
+
+a
+  color: $color2
+  font-family: 'Nixie One', cursive
+  text-decoration: none
+  font-size: 1.3em
+a:hover
+  text-decoration: underline
 
 .noscroll
   overflow: hidden
@@ -86,6 +94,7 @@ img
   #modal-icon
     position: absolute
     right: 10px
+    top: 0
     font-size: 28px
     color: rgba(255,255,255,0.2)
     cursor: pointer
