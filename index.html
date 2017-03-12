@@ -5,13 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Specific stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <title>Test API</title>
 </head>
-<body>
+<body id="page-body">
 <div class="content">
     <h1>Astronomy Picture of the Day</h1>
     <div class="loader-content">
@@ -33,30 +36,20 @@
     </div>
 
 </div>
+<!-- JQuery -->
 <script
         src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
+<!-- Masonry scripts -->
 <script src="lib/imagesloaded.pkgd.min.js"></script>
 <script src="lib/masonry.pkgd.min.js"></script>
 <script src="lib/init.js"></script>
-<script src="js/ApiCall.js"></script>
-<script src="js/Grid.js"></script>
-<script src="js/Image.js"></script>
-<script>
-    let grid = new Grid();
-    grid.buildGrid();
-    $(document).on("click", '.item', function(e) {
-        let image = new Image(e.currentTarget);
-        image.getImage();
-        $('body').addClass('noscroll');
-    });
-    $(document).on('click', '#modal-icon', function () {
-        $('#modal').hide();
-        $('#modal-img').html('');
-        $('#modal-txt').html('');
-        $('body').remove('noscroll');
-    });
-</script>
+<!-- App scripts -->
+
+<script src="js/apiCallModule.js"></script>
+<script src="js/localStorageModule.js"></script>
+<script src="js/manageMediaModule.js"></script>
+
 </body>
 </html>
