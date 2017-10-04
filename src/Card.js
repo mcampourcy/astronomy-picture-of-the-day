@@ -32,7 +32,7 @@ class Card extends Component {
     render() {
         const posts = this.state.posts.map((item, i) => (
             <div  className='item'  key={i}>
-                <Image item={item}/>
+                <Image item={item} id={i}/>
             </div>
         ));
         return (

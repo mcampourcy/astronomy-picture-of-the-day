@@ -21,28 +21,32 @@ section.container {
   color: #fff;
   font-family: "Open Sans", sans-serif; }
 
-h1, h2 {
-  text-align: center;
+h1, h2, h3 {
+  font-family: "Nixie One", cursive;
   font-weight: 400;
-  font-family: "Nixie One", cursive; }
+  text-align: center; }
 
 h1 {
   font-size: 3em; }
 
 h2 {
-  font-size: 2em;
-  color: #88cc00; }
+  color: #88cc00;
+  font-size: 2em; }
+
+h3 {
+  color: #88cc00;
+  font-size: 1em; }
 
 img {
   height: auto;
-  width: auto;
-  max-width: 100%; }
+  max-width: 100%;
+  width: auto; }
 
 a {
   color: #88cc00;
   font-family: "Nixie One", cursive;
-  text-decoration: none;
-  font-size: 1.3em; }
+  font-size: 1.3em;
+  text-decoration: none; }
   a:hover {
     text-decoration: underline; }
 
@@ -54,10 +58,12 @@ a {
 
 /** === 2. BLOCKS === */
 .overlay {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   height: 100%;
   opacity: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   transition: .5s ease;
   width: 100%;
   z-index: 1; }
@@ -94,3 +100,36 @@ a {
   margin: 0 0 0.5em;
   position: relative;
   width: 100%; }
+
+div[id^="modal-"] {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  height: 100vh;
+  padding: 35px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2; }
+  div[id^="modal-"] .container {
+    background-color: #222;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; }
+    div[id^="modal-"] .container .modal-icon {
+      color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      font-size: 28px;
+      position: absolute;
+      right: 10px;
+      top: 0; }
+      div[id^="modal-"] .container .modal-icon:hover {
+        color: rgba(255, 255, 255, 0.5); }
+    div[id^="modal-"] .container .modal-img {
+      display: inline-block;
+      width: 43%; }
+    div[id^="modal-"] .container .modal-txt {
+      display: inline-block;
+      padding: 15px;
+      vertical-align: top;
+      width: 55%; }
