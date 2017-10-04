@@ -1,0 +1,96 @@
+/* Nasa Picture of the Day - 2.0 - October 2017 */
+/**
+ * 0. VARIABLES
+ * 1. GENERAL
+ * 2. BLOCKS
+ * 3. ELEMENTS
+ */
+@import url("https://fonts.googleapis.com/css?family=Nixie+One");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+/** === 0. VARIABLES AND KEYFRAMES === */
+/** === 1. GENERAL === */
+* {
+  box-sizing: border-box; }
+
+html, body {
+  background-color: #222;
+  height: 100%; }
+
+section.container {
+  background-color: #222;
+  color: #fff;
+  font-family: "Open Sans", sans-serif; }
+
+h1, h2 {
+  text-align: center;
+  font-weight: 400;
+  font-family: "Nixie One", cursive; }
+
+h1 {
+  font-size: 3em; }
+
+h2 {
+  font-size: 2em;
+  color: #88cc00; }
+
+img {
+  height: auto;
+  width: auto;
+  max-width: 100%; }
+
+a {
+  color: #88cc00;
+  font-family: "Nixie One", cursive;
+  text-decoration: none;
+  font-size: 1.3em; }
+  a:hover {
+    text-decoration: underline; }
+
+.noscroll {
+  overflow: hidden; }
+
+.text-right {
+  text-align: right; }
+
+/** === 2. BLOCKS === */
+.overlay {
+  background: rgba(0, 0, 0, 0.9);
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  transition: .5s ease;
+  width: 100%;
+  z-index: 1; }
+  .overlay:hover {
+    opacity: 1; }
+  .overlay .overlay-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0 2em;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 100%; }
+
+.masonry {
+  column-gap: 1.5em;
+  font-size: .85em;
+  padding: 0 2.5rem; }
+  @media (min-width: 560px) {
+    .masonry {
+      column-count: 2; } }
+  @media (min-width: 768px) {
+    .masonry {
+      column-count: 3; } }
+  @media (min-width: 980px) {
+    .masonry {
+      column-count: 4; } }
+  @media (min-width: 1200px) {
+    .masonry {
+      column-count: 5; } }
+
+.item {
+  display: inline-block;
+  margin: 0 0 0.5em;
+  position: relative;
+  width: 100%; }
