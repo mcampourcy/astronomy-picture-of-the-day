@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from './Card';
+import Grid from './Grid';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <section className='container'>
           <header>
-              <h1>Welcome</h1>
+              <h1>Astronomy Picture of the Day</h1>
           </header>
-          <Card />
+          <Grid />
       </section>
     );
   }
 }
-
-export default App;

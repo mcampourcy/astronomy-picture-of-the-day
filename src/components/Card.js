@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Maximize2 } from 'react-feather';
-import Modal from './Modal';
+import Image from './containers/Image';
+import Modal from './containers/Modal';
 
-class Image extends Component {
+export default class Card extends Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +15,6 @@ class Image extends Component {
     handleClick(e) {
         e.preventDefault();
         let modal = document.getElementById(`modal-${this.props.id}`);
-        console.log(this.state.isActive);
 
         if(this.state.isActive) {
             modal.style.display = "none";
@@ -24,23 +23,15 @@ class Image extends Component {
             modal.style.display = "block";
             this.setState({isActive: true});
         }
-
     }
 
     render() {
+
         return (
-            <div>
-                <img src={this.props.item.url} alt=""/>
-                <a href={`#modal-${this.props.id}`} className='overlay' onClick={this.handleClick}>
-                    <span className="overlay-txt">
-                        <h3>{this.props.item.title}</h3>
-                        <Maximize2/>
-                    </span>
-                </a>
-                <Modal onClose={this.handleClick} id={this.props.id} item={this.props.item}/>
+            <div className='item'>
+                <Image id={this.props.id} item={this.props.item} onClick={this.handleClick}/>
+                <Modal id={this.props.id} item={this.props.item} onClose={this.handleClick} />
             </div>
         );
     }
 }
-
-export default Image;
