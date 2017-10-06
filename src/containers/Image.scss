@@ -1,0 +1,25 @@
+@import '../colors';
+
+.overlay {
+  background: rgba(0,0,0,0.8);
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: .5s ease;
+  width: 100%;
+  z-index: 1;
+  &:hover {
+    opacity: 1;
+  }
+  .overlay-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0 2em;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+}

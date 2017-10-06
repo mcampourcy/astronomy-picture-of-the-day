@@ -1,0 +1,32 @@
+div[id^="modal-"] {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  height: 100vh;
+  padding: 35px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2; }
+  div[id^="modal-"] .container {
+    background-color: #222;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; }
+    div[id^="modal-"] .container .modal-icon {
+      color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      font-size: 28px;
+      position: absolute;
+      right: 10px;
+      top: 0; }
+      div[id^="modal-"] .container .modal-icon:hover {
+        color: rgba(255, 255, 255, 0.5); }
+    div[id^="modal-"] .container .modal-img {
+      display: inline-block;
+      width: 43%; }
+    div[id^="modal-"] .container .modal-txt {
+      display: inline-block;
+      padding: 15px;
+      vertical-align: top;
+      width: 55%; }

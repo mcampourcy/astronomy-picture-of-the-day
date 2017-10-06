@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Image from './containers/Image';
-import Modal from './containers/Modal';
+import Image from '../containers/Image';
+import Modal from '../containers/Modal';
+import './Card.css';
 
 export default class Card extends Component {
 
@@ -28,7 +29,7 @@ export default class Card extends Component {
     render() {
 
         return (
-            <div className='item'>
+            <div className='card'>
                 <Image id={this.props.id} item={this.props.item} onClick={this.handleClick}/>
                 <Modal id={this.props.id} item={this.props.item} onClose={this.handleClick} />
             </div>

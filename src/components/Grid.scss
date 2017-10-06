@@ -1,0 +1,19 @@
+@import '../colors';
+
+.grid {
+  column-gap: 1.5em;
+  font-size: .85em;
+  padding: 0 2.5rem;
+  @media (min-width: 560px) {
+    column-count: 2;
+  }
+  @media (min-width: 768px) {
+    column-count: 3;
+  }
+  @media (min-width: 980px) {
+    column-count: 4;
+  }
+  @media (min-width: 1200px) {
+    column-count: 5;
+  }
+}

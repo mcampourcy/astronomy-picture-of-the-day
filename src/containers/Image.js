@@ -1,12 +1,13 @@
 import React  from 'react';
 import { Maximize2 } from 'react-feather';
+import './Image.css';
 
-const Image = () => (
+const Image = ({ id, item, onClick }) => (
     <span>
-        <img src={this.props.item.url} alt=""/>
-        <a href={`#modal-${this.props.id}`} className='overlay' onClick={this.props.onClick}>
+        <img src={item.url} alt=""/>
+        <a href={`#modal-${id}`} className='overlay' onClick={onClick}>
             <span className="overlay-txt">
-                <h3>{this.props.item.title}</h3>
+                <h3>{item.title}</h3>
                 <Maximize2/>
             </span>
         </a>

@@ -1,0 +1,49 @@
+/* Nasa Picture of the Day - 2.0 - October 2017 */
+@import url("https://fonts.googleapis.com/css?family=Nixie+One");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+* {
+  box-sizing: border-box; }
+
+html, body {
+  background-color: #222;
+  height: 100%; }
+
+section.container {
+  background-color: #222;
+  color: #fff;
+  font-family: "Open Sans", sans-serif; }
+
+h1, h2, h3 {
+  font-family: "Nixie One", cursive;
+  font-weight: 400;
+  text-align: center; }
+
+h1 {
+  font-size: 3em; }
+
+h2 {
+  color: #88cc00;
+  font-size: 2em; }
+
+h3 {
+  color: #88cc00;
+  font-size: 1em; }
+
+img {
+  height: auto;
+  max-width: 100%;
+  width: auto; }
+
+a {
+  color: #88cc00;
+  font-family: "Nixie One", cursive;
+  font-size: 1.3em;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+.noscroll {
+  overflow: hidden; }
+
+.text-right {
+  text-align: right; }

@@ -1,11 +1,8 @@
 /* Nasa Picture of the Day - 2.0 - October 2017 */
+@import 'colors';
 
 @import url('https://fonts.googleapis.com/css?family=Nixie+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-$primary_color: #222;
-$secondary_color: #88cc00;
-$ternary_color: #fff;
 
 * {
   box-sizing: border-box;

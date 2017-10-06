@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import Grid from './Grid';
+import Grid from './components/Grid';
 
 export default class App extends Component {
   render() {

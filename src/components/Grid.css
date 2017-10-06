@@ -1,0 +1,16 @@
+.grid {
+  column-gap: 1.5em;
+  font-size: .85em;
+  padding: 0 2.5rem; }
+  @media (min-width: 560px) {
+    .grid {
+      column-count: 2; } }
+  @media (min-width: 768px) {
+    .grid {
+      column-count: 3; } }
+  @media (min-width: 980px) {
+    .grid {
+      column-count: 4; } }
+  @media (min-width: 1200px) {
+    .grid {
+      column-count: 5; } }

@@ -1,20 +1,21 @@
 import React  from 'react';
 import { X } from 'react-feather';
+import './Modal.css';
 
-const Modal = () => (
-    <div id={`modal-${this.props.id}`} onClick={this.props.onClose}>
+const Modal = ({ id, item, onClose }) => (
+    <div id={`modal-${id}`} onClick={onClose}>
         <div className="container">
             <div className="modal-icon">
-                <X onClick={this.props.onClose} />
+                <X onClick={onClose} />
             </div>
             <div className="modal-img">
-                <img src={this.props.item.url} alt={this.props.item.title}/>
+                <img src={item.url} alt={item.title}/>
             </div>
             <div className="modal-txt">
-                <h2>{this.props.item.title}</h2>
-                <p>{this.props.item.explanation}</p>
+                <h2>{item.title}</h2>
+                <p>{item.explanation}</p>
                 <p className='text-right'>
-                    <a href={this.props.item.hdurl}>Télécharger l'image en HD</a>
+                    <a href={item.hdurl}>Télécharger l'image en HD</a>
                 </p>
             </div>
         </div>
