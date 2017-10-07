@@ -31,7 +31,7 @@ export default class Grid extends Component {
     componentDidUpdate() {
         const lastStorageDay = new Date(this.state.posts.slice(-1)[0].date);
         if(this.today.toLocaleDateString() !== lastStorageDay.toLocaleDateString()) {
-            const nextLastStorageDay = new Date(lastStorageDay.setDate(lastStorageDay.getDate() +1));
+            const nextLastStorageDay = new Date(lastStorageDay.setDate(lastStorageDay.getDate()) +1);
             this.handleConnexion(nextLastStorageDay, this.today);
         }
    }
@@ -40,16 +40,19 @@ export default class Grid extends Component {
         const startDate = firstDate.toISOString().substring(0, 10);
         const endDate = lastDate.toISOString().substring(0, 10);
 
-        this.serverRequest = axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${startDate}&end_date=${endDate}`)
-            .then(res => {
-                this.setState({ posts: res.data });
-            })
-            .then(() => {
-                localStorage.setItem('pictures', JSON.stringify(this.state.posts));
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        if(startDate !== endDate) {
+            this.serverRequest = axios.get(`https://api.nasa.gov/planetary/apod?api_key=zkj9lIiEkVkyiLcQVgD3Yxw2mrMn8LT2DgfpnoRR&start_date=${startDate}&end_date=${endDate}`)
+                .then(res => {
+                    this.setState({ posts: res.data });
+                })
+                .then(() => {
+                    localStorage.setItem('pictures', JSON.stringify(this.state.posts));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+
     }
 
     render() {
