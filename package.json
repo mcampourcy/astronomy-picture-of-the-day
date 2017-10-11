@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Simple Website based on NASA Api",
   "main": "./src/index.js",
-  "private": true,
   "dependencies": {
     "axios": "^0.16.2",
     "node-sass-chokidar": "0.0.3",
