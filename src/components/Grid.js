@@ -7,8 +7,10 @@ export default class Grid extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {posts: []};
-        this.serverRequest = '';
+        this.state = {
+            posts: [],
+            test: ''
+        };
         this.today = new Date();
     }
 
@@ -24,10 +26,6 @@ export default class Grid extends Component {
         }
     }
 
-    componentWillUnmount() {
-        this.serverRequest.abort();
-    }
-
     componentDidUpdate() {
         const lastStorageDay = new Date(this.state.posts.slice(-1)[0].date);
         if(this.today.toLocaleDateString() !== lastStorageDay.toLocaleDateString()) {
@@ -41,9 +39,12 @@ export default class Grid extends Component {
         const endDate = lastDate.toISOString().substring(0, 10);
 
         if(startDate !== endDate) {
-            this.serverRequest = axios.get(`https://api.nasa.gov/planetary/apod?api_key=zkj9lIiEkVkyiLcQVgD3Yxw2mrMn8LT2DgfpnoRR&start_date=${startDate}&end_date=${endDate}`)
+            axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${startDate}&end_date=${endDate}`)
                 .then(res => {
-                    this.setState({ posts: res.data });
+                    let data = [];
+                    if(this.state.posts.length > 0) data.push(this.state.posts);
+                    data.push(res.data);
+                    this.setState({ posts: data[0] });
                 })
                 .then(() => {
                     localStorage.setItem('pictures', JSON.stringify(this.state.posts));
