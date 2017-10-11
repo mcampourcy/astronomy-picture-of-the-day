@@ -8,8 +8,8 @@ export default class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: [],
-            test: ''
+            loading: true,
+            posts: []
         };
         this.today = new Date();
     }
@@ -18,7 +18,10 @@ export default class Grid extends Component {
         const localPictures = localStorage.getItem('pictures');
         if(localPictures !== null) {
             const pictures = JSON.parse(localPictures);
-            this.setState({ posts: pictures });
+            this.setState({
+                posts: pictures,
+                loading: false
+            });
         } else {
             let date = new Date();
             let tenDaysAgo = new Date(date.setDate(date.getDate() - 25));
@@ -48,6 +51,7 @@ export default class Grid extends Component {
                 })
                 .then(() => {
                     localStorage.setItem('pictures', JSON.stringify(this.state.posts));
+                    this.setState({loading: false})
                 })
                 .catch((err) => {
                     console.log(err);
@@ -57,13 +61,21 @@ export default class Grid extends Component {
     }
 
     render() {
-        const posts = this.state.posts.slice(0).reverse().map((item, i) => (
-            <Card item={item} key={i} id={i} />
-        ));
-        return (
-            <div className='grid'>
-                { posts }
-            </div>
-        );
+        if(this.state.loading) {
+            return (
+                <div className="loader-content">
+                    <div id="loader"> </div>
+                </div>
+            )
+        } else {
+            const posts = this.state.posts.slice(0).reverse().map((item, i) => (
+                <Card item={item} key={i} id={i} />
+            ));
+            return (
+                <div className='grid'>
+                    { posts }
+                </div>
+            );
+        }
     }
 }

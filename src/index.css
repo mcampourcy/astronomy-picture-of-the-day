@@ -47,3 +47,21 @@ a {
 
 .text-right {
   text-align: right; }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+.loader-content {
+  width: 100%; }
+  .loader-content #loader {
+    animation: spin 2s linear infinite;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #777 #88cc00 #88cc00;
+    border-radius: 50%;
+    height: 40px;
+    margin: 0 auto;
+    width: 40px; }
