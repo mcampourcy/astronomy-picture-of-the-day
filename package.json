@@ -1,5 +1,5 @@
 {
-  "name": "Astronomy Picture Of The Day",
+  "name": "AstronomyPictureOfTheDay",
   "version": "0.1.0",
   "description": "Simple Website based on NASA Api",
   "main": "./src/index.js",
@@ -15,8 +15,8 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "NODE_ENV=production react-scripts start",
+    "build": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
