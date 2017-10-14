@@ -2,7 +2,7 @@
   "name": "AstronomyPictureOfTheDay",
   "version": "0.1.0",
   "description": "Simple Website based on NASA Api",
-  "main": "index.html",
+  "main": "server.jsl",
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
