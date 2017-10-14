@@ -42,7 +42,7 @@ export default class Grid extends Component {
         const endDate = lastDate.toISOString().substring(0, 10);
 
         if(startDate !== endDate) {
-            axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${startDate}&end_date=${endDate}`)
+            axios.get(`https://api.nasa.gov/planetary/apod?api_key=zkj9lIiEkVkyiLcQVgD3Yxw2mrMn8LT2DgfpnoRR&start_date=${startDate}&end_date=${endDate}`)
                 .then(res => {
                     let data = [];
                     if(this.state.posts.length > 0) data.push(this.state.posts);
