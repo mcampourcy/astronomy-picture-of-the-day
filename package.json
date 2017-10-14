@@ -17,7 +17,8 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-dev": "NODE_ENV=developement react-scripts start",
-    "start": "npm run build && node server.js",
+    "start": "node server.js",
+    "install": "npm run build",
     "build": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
