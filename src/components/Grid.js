@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import './Grid.css';
+import './Grid.scss';
 
 export default class Grid extends Component {
 

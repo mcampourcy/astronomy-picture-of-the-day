@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Image from '../containers/Image';
 import Modal from '../containers/Modal';
-import './Card.css';
+import './Card.scss';
 
 export default class Card extends Component {
 

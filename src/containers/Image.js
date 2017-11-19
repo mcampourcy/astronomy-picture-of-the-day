@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Maximize2 } from 'react-feather';
-import './Image.css';
+import './Image.scss';
 
 const Image = ({ id, item, onClick }) => (
     <span>

@@ -1,6 +1,6 @@
 import React   from 'react';
 import { X } from 'react-feather';
-import './Modal.css';
+import './Modal.scss';
 
 const Modal = ({item, show}) => (
     <div className="container">
