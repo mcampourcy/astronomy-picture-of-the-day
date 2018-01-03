@@ -1,7 +1,9 @@
 const express = require('express');
+var cors = require('cors')
 const path = require('path');
 
 const app = express();
+app.use(cors({credentials: true, origin: true}));
 const port = process.env.PORT || 3001;
 // load the static folder for resources
 app.use(express.static(path.join(__dirname + '/src/public/')));

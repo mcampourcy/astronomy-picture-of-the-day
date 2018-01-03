@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeModules = path.resolve(__dirname, 'node_modules');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
     entry: path.join(__dirname, 'src', 'index.js'),
@@ -19,7 +20,6 @@ const config = {
             options: {
                 cacheDirectory: true
             },
-            exclude: [nodeModules]
         }, {
             // required to write 'require('./style.scss')'
             test: /\.scss$/,
@@ -74,8 +74,19 @@ const config = {
         new ExtractTextPlugin({
             filename: '[name].css',
             allChunks: true
+        }),
+        new UglifyJsPlugin({
+            ie8: false,
+            ecma: 8,
+            test: /\.js($|\?)/i,
+            exclude: nodeModules
         })
-    ]
+    ],
+    node: {
+        fs: "empty",
+        net: "empty",
+        tls: "empty"
+    }
 };
 
 if (process.env.NODE_ENV === 'production') {
@@ -83,13 +94,6 @@ if (process.env.NODE_ENV === 'production') {
     config.plugins.push(
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                screw_ie8: true,
-                warnings: false
-            }
         })
     );
 } else {
