@@ -11,6 +11,7 @@
     "express": "^4.16.2",
     "imports-loader": "^0.7.1",
     "mongoose": "^4.13.1",
+    "open-graph-scraper": "^3.1.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-feather": "^1.0.7",
