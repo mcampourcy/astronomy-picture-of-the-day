@@ -5,11 +5,11 @@ const nodeModules = path.resolve(__dirname, 'node_modules');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: path.join(__dirname, 'app', 'src', 'index.js'),
     output: {
         library: '[name]', // assets build
         libraryTarget: 'umd',
-        path: path.join(__dirname, 'src/public'),
+        path: path.join(__dirname, 'public'),
         filename: '[name].js',
         chunkFilename: '[name]-[chunkhash].js'
     },
@@ -17,8 +17,9 @@ const config = {
         rules: [{
             test: /\.jsx?$/,
             loader: 'babel-loader',
+            exclude: nodeModules,
             options: {
-                cacheDirectory: true
+                cacheDirectory: true,
             },
         }, {
             // required to write 'require('./style.scss')'
@@ -36,7 +37,7 @@ const config = {
                         loader: 'sass-loader',
                         options: {
                             includePaths: [
-                                path.join(__dirname, 'src'),
+                                path.join(__dirname, 'app'),
                                 nodeModules
                             ],
                             sourceMap: true
@@ -85,7 +86,8 @@ const config = {
     node: {
         fs: "empty",
         net: "empty",
-        tls: "empty"
+        tls: "empty",
+        charset: "empty"
     }
 };
 

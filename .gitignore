@@ -1,6 +1,17 @@
 # dependencies
 /node_modules
+
+# misc
 .idea
-/data
+populate.js
+robots.txt
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/yarn.lock
 /package-lock.json
-.env
+/public/main.*
+
+# mongo data
+data
