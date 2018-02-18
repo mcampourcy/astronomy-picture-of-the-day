@@ -15,3 +15,4 @@ yarn-error.log*
 
 # mongo data
 data
+.env
