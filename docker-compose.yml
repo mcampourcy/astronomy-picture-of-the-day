@@ -1,49 +1,48 @@
-#les services dans le même dockerFile sont sur le même réseau (appelé défault), pas besoin de les binder
 version: "2"
 services:
   app:
-    environment: # environment variables
-      MONGO_URL: mongodb://mongo/pictures # docker a un service dns qui peut appeler les services par leurs noms
+    environment:
+      MONGO_URL: mongodb://mongo/pictures
       PORT: 3000
-      VIRTUAL_HOST: apod.local # à ajouter dans le hosts, ou sinon à utiliser avec dns masquarad (/etc/NetworkManager/dnsmasq.d/lephare.conf)
+      VIRTUAL_HOST: apod.local
     restart: always
     build: .
-    ports: # Listen port
+    ports:
       - 3000
     networks:
       - proxy
       - database
-    volumes: # For persistence storage
+    volumes:
       - ./:/usr/src/app
   mongo:
     image: mongo
-    volumes: # For persistence storage
+    volumes:
       - mongo:/data/db
     networks:
       - database
-#  nginx-proxy:
-#    image: jwilder/nginx-proxy
-#    ports:
-#      - "80:80" # ! ne fonctionnera pas si un autre service tourne déjà dessus
-#    volumes:
-#      - /var/run/docker.sock:/tmp/docker.sock:ro
-#    networks:
-#      - proxy
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy
 
-# on isole les réseaux (proxy ne voit plus db et vice versa)
-#networks:
-#  proxy:
-#  database:
-
-# Noeuds extérieurs pour la docker stack
+# Isolate the networks (proxy can't see db)
 networks:
   proxy:
-    external:
-      name: dev_proxy
   database:
+
+# Noeuds extérieurs pour la docker stack
+#networks:
+#  proxy:
+#    external:
+#      name: dev_proxy
+#  database:
 #    external:
 #      name: dev_database
 
-# Enregistre le dossier de data directement dans le volume de docker
+# Save data file directly in docker volume
 volumes:
   mongo:

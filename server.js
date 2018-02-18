@@ -1,26 +1,27 @@
-require('babel-register');
-const express = require('express');
-const mongoose = require('mongoose');
-const router = require('./app/router');
-const path = require('path');
-
-// Connect to MongoDB
-mongoose.connect(`${process.env.MONGO_URL || 'mongodb://localhost:27017/pictures'}`);
+import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
+import router from './server/router';
 
 // Initialize http server
 const app = express();
 const port = process.env.PORT || 3000;
 
-// load the static folder for resources
-app.use(express.static(path.join(__dirname + '/public/')));
+// Static files
+app.use(express.static(path.join(__dirname, 'bundle', 'public')));
 
-// API endpoints
-// app.use('/', router);
+// Connect to MongoDB
+mongoose.connect(`${process.env.MONGO_URL || 'mongodb://localhost:27017/pictures'}`);
 
-// run server, redirect all route on index.html for express router
-app.get('*', (req, res) => {
-    // and returning the index.html file
-    res.sendFile(path.join(__dirname + '/public/index.html'));
-}).listen(port, () => {
+// Get the routes
+app.use('/api', router);
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).send('<h2 align=center>Page Not Found!</h2>');
+});
+
+// Run server
+app.listen(port, () => {
     console.log(`Server on port ${port}`);
 });

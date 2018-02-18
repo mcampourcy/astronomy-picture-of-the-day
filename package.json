@@ -23,9 +23,8 @@
     "build:watch": "webpack --watch",
     "build:dev": "NODE_ENV=developement webpack",
     "build": "NODE_ENV=production webpack -p",
-    "start": "nodemon server.js",
-    "test": "react-scripts test --env=jsdom",
-    "populate": "babel-node populate.js"
+    "start": "nodemon server.js --exec babel-node --presets babel-preset-env",
+    "test": "react-scripts test --env=jsdom"
   },
   "devDependencies": {
     "babel": "^6.23.0",
