@@ -1,0 +1,42 @@
+@import '../colors';
+@import '../index';
+
+.modal {
+  .container {
+    background-color: $primary_color;
+    display: flex;
+    max-width:  1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+
+    .modal-icon{
+      color: rgba(255,255,255,0.2);
+      cursor: pointer;
+      font-size: 28px;
+      position: absolute;
+      right: 10px;
+      top: 0;
+      &:hover{
+        color: rgba(255,255,255,0.5);
+      }
+    }
+
+    .modal-img{
+      flex: 1;
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .modal-txt {
+      flex: 1;
+      margin-left: 2rem;
+      p {
+        color: $ternary_color;
+      }
+    }
+  }
+}
