@@ -2,8 +2,6 @@ version: "2"
 services:
   app:
     environment:
-      MONGO_URL: mongodb://mongo/pictures
-      PORT: 3000
       VIRTUAL_HOST: apod.local
     restart: always
     build: .
@@ -33,15 +31,6 @@ services:
 networks:
   proxy:
   database:
-
-# Noeuds extérieurs pour la docker stack
-#networks:
-#  proxy:
-#    external:
-#      name: dev_proxy
-#  database:
-#    external:
-#      name: dev_database
 
 # Save data file directly in docker volume
 volumes:

@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import path from 'path';
 import router from './server/router';
 
+// Get environment variables
+require('dotenv').config();
+
 // Initialize http server
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,7 +14,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'bundle', 'public')));
 
 // Connect to MongoDB
-mongoose.connect(`${process.env.MONGO_URL || 'mongodb://localhost:27017/pictures'}`);
+mongoose.connect(`${process.env.DB_HOST || 'mongodb://localhost:27017/pictures'}`);
 
 // Get the routes
 app.use('/api', router);
