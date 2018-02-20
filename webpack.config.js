@@ -5,11 +5,11 @@ const nodeModules = path.resolve(__dirname, 'node_modules');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
-    entry: path.join(__dirname, 'bundle', 'src', 'index.js'),
+    entry: path.join(__dirname, 'app', 'src', 'index.js'),
     output: {
         library: '[name]', // assets build
         libraryTarget: 'umd',
-        path: path.join(__dirname, 'bundle', 'public'),
+        path: path.join(__dirname, 'app', 'public'),
         filename: '[name].js',
         chunkFilename: '[name]-[chunkhash].js'
     },
@@ -37,7 +37,7 @@ const config = {
                         loader: 'sass-loader',
                         options: {
                             includePaths: [
-                                path.join(__dirname, 'bundle', 'src'),
+                                path.join(__dirname, 'app', 'src'),
                                 nodeModules
                             ],
                             sourceMap: true

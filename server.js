@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Static files
-app.use(express.static(path.join(__dirname, 'bundle', 'public')));
+app.use(express.static(path.join(__dirname, 'app', 'public')));
 
 // Connect to MongoDB
 mongoose.connect(`${process.env.DB_HOST || 'mongodb://localhost:27017/pictures'}`);
