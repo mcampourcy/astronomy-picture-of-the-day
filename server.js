@@ -8,13 +8,13 @@ require('dotenv').config();
 
 // Initialize http server
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 // Static files
 app.use(express.static(path.join(__dirname, 'app', 'public')));
 
 // Connect to MongoDB
-mongoose.connect(`${process.env.DB_HOST || 'mongodb://localhost:27017/pictures'}`);
+mongoose.connect(process.env.DB_HOST);
 
 // Get the routes
 app.use('/api', router);

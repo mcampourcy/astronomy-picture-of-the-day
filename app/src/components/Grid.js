@@ -60,7 +60,7 @@ export default class Grid extends Component {
         const endDate = lastDate.toISOString().substring(0, 10);
 
         if(startDate !== endDate) {
-            fetch(`https://api.nasa.gov/planetary/apod?api_key=zkj9lIiEkVkyiLcQVgD3Yxw2mrMn8LT2DgfpnoRR&start_date=${startDate}&end_date=${endDate}`)
+            fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.PORT}&start_date=${startDate}&end_date=${endDate}`)
                 .then(res => res.json())
                 .catch(error => console.error('Error:', error))
                 .then(response => {
