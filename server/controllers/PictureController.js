@@ -1,7 +1,6 @@
-// import mongoose from 'mongoose';
 import Picture from '../models/PictureModel';
 
-const allPictures = (req, res) => {
+const getAllPictures = (req, res) => {
     Picture.find().exec((err, pictures) => {
         if(err){
             return res.json({'success': false, 'message':'No pictures'});
@@ -10,4 +9,20 @@ const allPictures = (req, res) => {
     });
 };
 
-export default allPictures;
+const postAllPictures = (req, res) => {
+    const picture = new Picture();
+    picture.copyright = req.body.copyright;
+    picture.date = req.body.date;
+    picture.explanation = req.body.explanation;
+    picture.hdurl = req.body.hdurl;
+    picture.media_type = req.body.media_type;
+    picture.title = req.body.title;
+    picture.url = req.body.url;
+    picture.save((err) => {
+        if (err)
+            res.send(err);
+        res.json({ message: 'Picture successfully added!' });
+    });
+};
+
+export { getAllPictures, postAllPictures };

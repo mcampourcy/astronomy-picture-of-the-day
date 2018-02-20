@@ -184,7 +184,7 @@ a {
       width: 100%; }
   .modal .container .modal-txt {
     flex: 1;
-    margin-left: 2rem; }
+    margin: 0 2rem; }
     .modal .container .modal-txt p {
       color: #fff; }
 .card {

@@ -1,7 +1,12 @@
 import express from 'express';
-import allPictures from './controllers/PictureController';
+import bodyParser from 'body-parser';
+import { getAllPictures, postAllPictures } from './controllers/PictureController';
 const router = express.Router();
 
-router.get('/', allPictures);
+let jsonParser = bodyParser.json();
+
+router
+    .get('/', getAllPictures)
+    .post('/post/all/', jsonParser, postAllPictures);
 
 export default router;

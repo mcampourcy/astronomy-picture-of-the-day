@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Grid from './Grid';
 
-// Todo : connect with MongoDB
 // Todo : add Fragments
 // Todo : add routes for modals
 // Todo : add HOC
