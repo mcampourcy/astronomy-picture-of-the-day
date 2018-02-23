@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import './Modal.scss';
 
 const modalRoot = document.querySelector('[is="modal-content"]');
@@ -23,6 +24,10 @@ class Modal extends React.Component {
             modalRoot
         );
     }
+}
+
+Modal.propTypes = {
+    onClick: PropTypes.func.isRequired
 }
 
 export default Modal;

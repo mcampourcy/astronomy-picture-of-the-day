@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { X } from 'react-feather';
 import './ModalContent.scss';
 
@@ -18,6 +19,11 @@ const ModalContent = ({item, show}) => (
             </p>
         </div>
     </div>
-)
+);
+
+ModalContent.propTypes = {
+    item: PropTypes.object.isRequired,
+    show: PropTypes.func.isRequired
+}
 
 export default ModalContent;

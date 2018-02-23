@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Modal from './Modal';
 import Image from '../containers/Image';
 import ModalContent from "../containers/ModalContent";
@@ -41,5 +42,9 @@ class Card extends Component {
         );
     }
 }
+
+Card.propTypes = {
+    item: PropTypes.object.isRequired
+};
 
 export default Card;

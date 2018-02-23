@@ -1,4 +1,5 @@
 import React, { Fragment }  from 'react';
+import PropTypes from 'prop-types';
 import { Maximize2 } from 'react-feather';
 import './Image.scss';
 
@@ -13,5 +14,9 @@ const Image = ({ item, onClick }) => (
         </a>
     </Fragment>
 );
+
+Image.propTypes = {
+    item: PropTypes.object.isRequired
+};
 
 export default Image;
