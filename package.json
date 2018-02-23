@@ -7,6 +7,8 @@
   "dependencies": {
     "axios": "^0.17.1",
     "babel-register": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
     "exports-loader": "^0.6.4",
@@ -14,6 +16,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "imports-loader": "^0.7.1",
     "mongoose": "^5.0.3",
+    "nodemon": "^1.14.12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-feather": "^1.0.8",
@@ -22,9 +25,9 @@
   },
   "scripts": {
     "build:watch": "webpack --watch",
-    "build:dev": "NODE_ENV=developement webpack",
+    "build:dev": "NODE_ENV=development webpack",
     "build": "NODE_ENV=production webpack -p",
-    "start": "nodemon server.js --exec babel-node --presets babel-preset-env",
+    "start": "node server.js",
     "test": "react-scripts test --env=jsdom"
   },
   "devDependencies": {
@@ -34,14 +37,11 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.9",
     "eslint": "^4.11.0",
     "eslint-plugin-compat": "^2.1.0",
     "eslint-plugin-react": "^7.5.1",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.14.12",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^0.4.6",

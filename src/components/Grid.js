@@ -1,81 +1,102 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Card from './Card';
 import './Grid.scss';
 
 export default class Grid extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true,
-            posts: []
-        };
-        this.today = new Date();
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      pictures: []
+    };
+    this.today = new Date();
+  }
 
-    componentDidMount() {
-        const localPictures = localStorage.getItem('pictures');
-        if(localPictures !== null) {
-            const pictures = JSON.parse(localPictures);
-            this.setState({
-                posts: pictures,
-                loading: false
-            });
+  componentDidMount() {
+    fetch('/api')
+      .then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {
+        const pictures = response.pictures;
+        if(pictures.length > 0) {
+          this.setState({
+            pictures,
+            loading: false
+          });
         } else {
-            let date = new Date();
-            let tenDaysAgo = new Date(date.setDate(date.getDate() - 25));
-            this.handleConnexion(tenDaysAgo, this.today);
+          let date = new Date();
+          let tenDaysAgo = new Date(date.setDate(date.getDate() - 25));
+          this.handleConnexion(tenDaysAgo, this.today);
         }
+      })
+  }
+
+  // componentDidUpdate() {
+  //     const lastStorageDay = new Date(this.state.posts.slice(-1)[0].date);
+  //     if(this.today.toLocaleDateString() !== lastStorageDay.toLocaleDateString()) {
+  //         const nextLastStorageDay = new Date(lastStorageDay.setDate(lastStorageDay.getDate()) +1);
+  //         this.handleConnexion(nextLastStorageDay, this.today);
+  //     }
+  // }
+
+  postPictures(pictures) {
+    pictures.map(picture => {
+      fetch('/api/post/all', {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(picture),
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      })
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => {console.log(response)});
+    });
+  }
+
+  handleConnexion(firstDate, lastDate) {
+    const startDate = firstDate.toISOString().substring(0, 10);
+    const endDate = lastDate.toISOString().substring(0, 10);
+    if(startDate !== endDate) {
+      fetch(`https://api.nasa.gov/planetary/apod?api_key=zkj9lIiEkVkyiLcQVgD3Yxw2mrMn8LT2DgfpnoRR&start_date=${startDate}&end_date=${endDate}`)
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => {
+          let { pictures } = this.state;
+          if(pictures.length > 0) {
+            for(let p of response.pictures) {
+              pictures.push(pictures.find(picture => picture.date !== p.date));
+            }
+          } else {
+            pictures = response;
+          }
+          this.setState({pictures});
+          return pictures;
+        })
+        .then((res) => {
+          this.postPictures(res);
+          this.setState({loading: false})
+        })
     }
 
-    componentDidUpdate() {
-        const lastStorageDay = new Date(this.state.posts.slice(-1)[0].date);
-        if(this.today.toLocaleDateString() !== lastStorageDay.toLocaleDateString()) {
-            const nextLastStorageDay = new Date(lastStorageDay.setDate(lastStorageDay.getDate()) +1);
-            this.handleConnexion(nextLastStorageDay, this.today);
+  }
+
+  render() {
+    const { pictures } = this.state;
+    return(
+      <div>
+        {this.state.loading &&
+        <div className="loader-content">
+          <div id="loader"> </div>
+        </div>
         }
-   }
-
-    handleConnexion(firstDate, lastDate) {
-        const startDate = firstDate.toISOString().substring(0, 10);
-        const endDate = lastDate.toISOString().substring(0, 10);
-
-        if(startDate !== endDate) {
-            axios.get(`https://api.nasa.gov/planetary/apod?api_key=zkj9lIiEkVkyiLcQVgD3Yxw2mrMn8LT2DgfpnoRR&start_date=${startDate}&end_date=${endDate}`)
-                .then(res => {
-                    let data = [];
-                    if(this.state.posts.length > 0) data.push(this.state.posts);
-                    data.push(res.data);
-                    this.setState({ posts: data[0] });
-                })
-                .then(() => {
-                    localStorage.setItem('pictures', JSON.stringify(this.state.posts));
-                    this.setState({loading: false})
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
-
-    }
-
-    render() {
-        if(this.state.loading) {
-            return (
-                <div className="loader-content">
-                    <div id="loader"> </div>
-                </div>
-            )
-        } else {
-            const posts = this.state.posts.slice(0).reverse().map((item, i) => (
-                <Card item={item} key={i} id={i} />
-            ));
-            return (
-                <div className='grid'>
-                    { posts }
-                </div>
-            );
-        }
-    }
+        <div className='grid'>
+          {pictures.map((item, i) => (
+            <Card item={item} key={i} id={i} />
+          ))}
+        </div>
+      </div>
+    )
+  }
 }

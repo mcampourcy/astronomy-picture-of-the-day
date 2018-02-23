@@ -2,7 +2,6 @@
 /node_modules
 
 # misc
-.env
 .idea
 
 # packages
@@ -10,4 +9,5 @@
 
 # mongo data
 data
-/.env
+/.env.production
+/.env.development

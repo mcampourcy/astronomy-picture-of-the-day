@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Grid from './Grid';
-const ogs = require('open-graph-scraper');
+
+// Todo : connect with MongoDB
+// Todo : add Fragments
+// Todo : add routes for modals
+// Todo : add HOC
+// Todo : add Redux
+// Todo : add translation
+// Todo : add effect on modal
+// Todo : responsive
+// Todo : refatoring
 
 export default class App extends Component {
   render() {
-      const options = {'url': 'http://ogp.me/'};
-      ogs(options, (error, results) => {
-          console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-          console.log('results:', results);
-      });
-      console.log('hey');
     return (
       <section className='container'>
           <header>

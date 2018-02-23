@@ -1,12 +1,12 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { getAllPictures, postAllPictures } from './controllers/PictureController';
+const express = require('express');
+const bodyParser = require('body-parser');
+const {getAllPictures, postAllPictures} = require('./controllers/PictureController');
 const router = express.Router();
 
 let jsonParser = bodyParser.json();
 
 router
-    .get('/', getAllPictures)
-    .post('/post/all/', jsonParser, postAllPictures);
+  .get('/', getAllPictures)
+  .post('/post/all/', jsonParser, postAllPictures);
 
-export default router;
+module.exports = router;

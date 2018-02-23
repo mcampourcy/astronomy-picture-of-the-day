@@ -2,6 +2,7 @@ version: "2"
 services:
   app:
     environment:
+      NODE_ENV: development
       VIRTUAL_HOST: apod.local
     restart: always
     build: .
