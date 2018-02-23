@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.scss';
 import Card from "./Card";
+import './App.scss';
 
 // Todo : add Fragments
 // Todo : add routes for modals
@@ -11,16 +11,17 @@ import Card from "./Card";
 // Todo : responsive
 // Todo : refatoring
 
-export default class App extends Component {
+class App extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             loading: true,
             pictures: []
         };
         this.today = new Date();
-        this.oneMonthAgo = new Date(this.today.setDate(this.today.getDate() - 25));
+        this.date = new Date();
+        this.oneMonthAgo = new Date(this.date.setDate(this.date.getDate() - 25));
     }
 
     componentDidMount() {
@@ -98,6 +99,7 @@ export default class App extends Component {
 
     render() {
         const { pictures } = this.state;
+
         return(
             <section className='container'>
                 <header>
@@ -109,8 +111,8 @@ export default class App extends Component {
                 </div>
                 }
                 <div className='grid'>
-                    {pictures.map((item, i) => (
-                        <Card item={item} key={i} id={i} />
+                    {pictures.map(item => (
+                        <Card key={item.slug} item={item} />
                     ))}
                 </div>
             </section>
@@ -118,3 +120,5 @@ export default class App extends Component {
     }
 
 }
+
+export default App;

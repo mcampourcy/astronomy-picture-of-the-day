@@ -7,6 +7,7 @@ const PictureSchema = new Schema({
     explanation: String,
     hdurl: String,
     media_type: String,
+    slug: String,
     title: String,
     url: String
 });
