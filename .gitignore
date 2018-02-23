@@ -3,11 +3,11 @@
 
 # misc
 .idea
+/.env.production
+/.env.development
+/src/public/main.*
 
 # packages
 /package-lock.json
 
 # mongo data
-data
-/.env.production
-/.env.development

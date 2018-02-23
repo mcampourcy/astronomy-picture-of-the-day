@@ -27,10 +27,10 @@ module.exports = {
     ]
   },
   "rules": {
-    "compat/compat": 2,
+    "compat/compat": 4,
     "indent": [
       "error",
-      2
+      4
     ],
     "linebreak-style": [
       "error",
