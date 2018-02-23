@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import Card from "./Card";
 import './App.scss';
 
-// Todo : add Fragments
 // Todo : add routes for modals
-// Todo : add HOC
 // Todo : add Redux
 // Todo : add translation
 // Todo : add effect on modal
 // Todo : responsive
-// Todo : refatoring
 
 class App extends Component {
 
