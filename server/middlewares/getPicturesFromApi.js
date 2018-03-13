@@ -10,14 +10,14 @@ const compare = (a,b) => {
 
 /**
  * Get Nasa's Api data depending a given period
- * @param {date}    start
- * @param {date}    end
  * @param {func}    req
  * @param {func}    res
  * @param {func}    next
- * @param {object}  pictures: the pictures already in database
  */
-const getPicturesFromApi = (start, end, req, res, next, pictures = []) => {
+const getPicturesFromApi = (req, res, next) => {
+
+    // pictures: the pictures already in database
+    const { start, end, pictures } = req;
     const startDate     = start.toISOString().substring(0, 10);
     const endDate       = end.toISOString().substring(0, 10);
     const source        = `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}&start_date=${startDate}&end_date=${endDate}`;

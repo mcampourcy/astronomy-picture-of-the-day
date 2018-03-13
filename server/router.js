@@ -31,15 +31,20 @@ router.get('/', function (req, res, next) {
     }
 
     if(start !== today) {
-        // If the last Db picture is old, get the new ones
-        getPicturesFromApi(start, today, req, res, next, pictures);
+        // If the last Db picture is old, go next
+        req.start = start;
+        req.end = today;
+        req.pictures = pictures;
+        next();
     } else {
         // Else, send data to the view
         res.json({'success':true, pictures})
     }
 
+}, function (req, res, next) {
+    // If the last Db picture is old, get the new ones
+    getPicturesFromApi(req, res, next);
 }, function (req, res) {
-
     // Finally, if we have some new pictures from Nasa's Api
     // send them in database
     postAllPictures(req, res);
