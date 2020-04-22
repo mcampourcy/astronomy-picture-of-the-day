@@ -1,5 +1,4 @@
-/* Nasa Picture of the Day - 2.0 - October 2017 */
-@import 'colors';
+@import '_colors.css';
 
 @import url('https://fonts.googleapis.com/css?family=Nixie+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -9,8 +8,8 @@
 }
 
 html, body {
-  background-color: $primary_color;
-  color: $ternary_color;
+  background-color: var(--primary_color);
+  color: var(--ternary_color);
   font-family: "Open Sans", sans-serif;
   height: 100%;
 }
@@ -26,12 +25,12 @@ h1 {
 }
 
 h2 {
-  color: $secondary_color;
+  color: var(--secondary_color);
   font-size: 2em;
 }
 
 h3 {
-  color: $secondary_color;
+  color: var(--secondary_color);
   font-size: 1em;
 }
 
@@ -42,13 +41,14 @@ img {
 }
 
 a {
-  color: $secondary_color;
+  color: var(--secondary_color);
   font-family: "Nixie One", cursive;
   font-size: 1.3em;
   text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .noscroll {
@@ -70,14 +70,15 @@ a {
 
 .loader-content {
   width: 100%;
-  #loader {
-    animation: spin 2s linear infinite;
-    border-style: solid;
-    border-width: 5px;
-    border-color: $fourth_color $secondary_color $secondary_color;
-    border-radius: 50%;
-    height: 40px;
-    margin: 0 auto;
-    width: 40px;
-  }
+}
+
+#loader {
+  animation: spin 2s linear infinite;
+  border-style: solid;
+  border-width: 5px;
+  border-color: var(--fourth_color) var(--secondary_color) var(--secondary_color);
+  border-radius: 50%;
+  height: 40px;
+  margin: 0 auto;
+  width: 40px;
 }
