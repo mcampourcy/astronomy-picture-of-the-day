@@ -1,5 +1,0 @@
-# Docker va ignorer la copie des node modules : on conserve ceux à l'intérieur du container, compilés pour la machine docker (perf+++)
-node_modules
-
-# mongo data
-data
