@@ -1,0 +1,7 @@
+{
+  "extends": "stylelint-a11y",
+  "rules": {
+    "number-leading-zero": "never",
+    "selector-no-qualifying-type": null,
+  }
+}
