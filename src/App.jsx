@@ -1,33 +1,14 @@
-import React, { useState } from 'react'
+import React, { Fragment, useContext } from 'react'
+import { ApiContext } from './ApiProvider'
 import { Card } from './Card'
 import './App.css'
 
 // Todo : add routes for modals
-// Todo : add Redux
 // Todo : add translation
-// Todo : add effect on modal
 // Todo : responsive
 
 export function App() {
-  const [loading, setLoading] = useState(true)
-  const [pictures, setPictures] = useState([])
-
-  // componentDidMount() {
-  //     fetch('/api')
-  //         .then(result => result.json())
-  //         .then(data => {
-  //             this.setState({
-  //                 loading: false
-  //             })
-  //             if(data.pictures.length > 0) {
-  //                 this.setState({
-  //                     pictures: data.pictures,
-  //                 })
-  //             }
-  //         })
-  //         .catch(error => console.error('Error:', error))
-  // }
-
+  const { loading, pictureOfTheDay, pictures } = useContext(ApiContext)
 
   return (
     <section className="container">
@@ -37,17 +18,31 @@ export function App() {
       {loading
         ? (
           <div className="loader-content">
-            <div id="loader"> </div>
+            <div id="loader" />
           </div>
         )
         : (
-          <div className="grid">
-            {pictures.length === 0
-              ? <p>Aucune image n'a été trouvée.</p>
-              : pictures.map(item => (
-                <Card key={item.slug} item={item} />
-              ))}
-          </div>
+          <Fragment>
+            <article>
+              <figure>
+                <img src={pictureOfTheDay.url} alt="" />
+              </figure>
+              <span>
+                <h2>{pictureOfTheDay.title}</h2>
+                <p>{pictureOfTheDay.explanation}</p>
+                <p>
+                  <a href={pictureOfTheDay.hdurl} target="_blank">Télécharger l'image en haute définition</a>
+                </p>
+              </span>
+            </article>
+            <section className="grid">
+              {pictures.length === 0
+                ? <p>Aucune image n'a été trouvée.</p>
+                : pictures.map(item => (
+                  <Card key={item.url} item={item} />
+                ))}
+            </section>
+          </Fragment>
         )}
     </section>
   )

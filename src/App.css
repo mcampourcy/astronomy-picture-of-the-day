@@ -1,5 +1,25 @@
 @import '_colors.css';
 
+article {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rem;
+  padding: 0 5rem;
+}
+
+article h2 {
+  text-align: left;
+}
+
+article > figure {
+  flex-grow: 1;
+}
+
+article > span {
+  flex-shrink: 5;
+}
+
 .grid {
   column-gap: 1.5em;
   font-size: .85em;

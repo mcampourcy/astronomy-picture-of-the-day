@@ -1,8 +1,5 @@
 @import '_colors.css';
 
-@import url('https://fonts.googleapis.com/css?family=Nixie+One');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
 * {
   box-sizing: border-box;
 }
@@ -12,6 +9,7 @@ html, body {
   color: var(--ternary_color);
   font-family: "Open Sans", sans-serif;
   height: 100%;
+  margin: 0;
 }
 
 h1, h2, h3 {
@@ -22,6 +20,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: 3em;
+  margin-bottom: 4rem;
 }
 
 h2 {
