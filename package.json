@@ -5,8 +5,11 @@
   "main": "server.js",
   "private": true,
   "dependencies": {
+    "date-fns": "^2.12.0",
     "dexie": "^2.0.4",
     "dotenv": "^8.2.0",
+    "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.4",

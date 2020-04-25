@@ -3,9 +3,9 @@
 
 # misc
 .idea
-/.env.production
-/.env.development
-/src/public/main.*
+/.env.prod
+/.env
+/public/main.*
 
 # packages
 /package-lock.json
