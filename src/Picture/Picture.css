@@ -1,0 +1,11 @@
+.picture {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 4rem;
+    width: 80%;
+}
+
+.picture > img {
+    width: 70%;
+}
