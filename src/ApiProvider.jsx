@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { element } from 'prop-types'
 import { isEmpty } from 'lodash'
-import { format, isEqual, parse, subMonths } from 'date-fns'
+import { format, subMonths } from 'date-fns'
 import { getApodDataSinceDate } from './helpers'
 import { db, initDB } from './helpers/db'
 
@@ -17,32 +17,38 @@ export function ApiProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!pictures.length) initPictures()
-  }, [pictures])
+    if (isEmpty(pictures)) initDatabase()
+  })
 
-  async function initPictures() {
-    const getPicturesInDB = await db.table('pictures').toArray()
-    const today = new Date()
+  const getPictureByDate = date => {
+    return pictures.find(picture => picture.date === date)
+  }
 
-    if (isEmpty(getPicturesInDB)) {
-      const defaultStartDate = format(subMonths(today, 3), 'yyyy-M-d')
+  async function initDatabase() {
+    const collection = await db.table('pictures').toCollection()
+    const picturesInDB = await collection.toArray()
+    const lastPictureSaved = await collection.last(d => d)
+
+    if (isEmpty(picturesInDB)) {
+      // If no data in DB, get all pictures of last 3 months
+      const defaultStartDate = format(subMonths(new Date(), 3), 'yyyy-M-d')
       const apodData = await getApodDataSinceDate(defaultStartDate)
       await initDB(apodData)
     } else {
-      const lastPictureSaved = getPicturesInDB[0]
-      const dbIsUpToDate = isEqual(today, parse(lastPictureSaved.date, 'yyyy-M-d', today))
+      const formattedToday = format(new Date(), 'yyyy-MM-d')
+      const dbIsUpToDate = getPictureByDate(formattedToday)
       if (!dbIsUpToDate) {
-        await getApodDataSinceDate(getPicturesInDB[0])
+        await getApodDataSinceDate(lastPictureSaved.date)
       }
     }
 
-    await setPictureOfTheDay(getPicturesInDB.shift())
-    await setPictures(getPicturesInDB)
+    setPictureOfTheDay(lastPictureSaved)
+    setPictures(picturesInDB)
     setLoading(false)
   }
 
   return (
-    <ApiContext.Provider value={{ loading, pictureOfTheDay, pictures }}>
+    <ApiContext.Provider value={{ loading, pictureOfTheDay, pictures, getPictureByDate }}>
       {children}
     </ApiContext.Provider>
   )

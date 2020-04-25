@@ -1,13 +1,9 @@
 import React, { Fragment, useContext } from 'react'
 import { ApiContext } from './ApiProvider'
-import { Card } from './Card'
-import './App.css'
+import { Image } from './Image'
+import './Grid.css'
 
-// Todo : add routes for modals
-// Todo : add translation
-// Todo : responsive
-
-export function App() {
+export function Grid() {
   const { loading, pictureOfTheDay, pictures } = useContext(ApiContext)
 
   return (
@@ -39,7 +35,7 @@ export function App() {
               {pictures.length === 0
                 ? <p>Aucune image n'a été trouvée.</p>
                 : pictures.map(item => (
-                  <Card key={item.url} item={item} />
+                  <Image key={item.id} item={item} />
                 ))}
             </section>
           </Fragment>

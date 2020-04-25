@@ -1,17 +1,18 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Maximize2 } from 'react-feather'
+import { Link } from 'react-router-dom'
 import './Image.css'
 
-export function Image({ item, onClick }) {
+export function Image({ item }) {
   return (
-    <Fragment>
+    <div className="card">
       <img src={item.url} alt="" />
-      <a href={`#modal-${item.slug}`} className="overlay" onClick={onClick}>
+      <Link to={`/${item.date}/${item.id}`} className="overlay">
         <span className="overlay-txt">
           <h3>{item.title}</h3>
           <Maximize2 />
         </span>
-      </a>
-    </Fragment>
+      </Link>
+    </div>
   )
 }
