@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { element } from 'prop-types'
 import { isEmpty } from 'lodash'
-import { format, isEqual, parse, subDays, subMonths } from 'date-fns'
+import { format, isEqual, parse, subMonths } from 'date-fns'
 import { getApodDataSinceDate } from './helpers'
 import { db, initDB } from './helpers/db'
 
