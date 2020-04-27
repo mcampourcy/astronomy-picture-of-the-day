@@ -23,7 +23,7 @@ export function Picture() {
           </small>
         </p>
       )}
-      <a href={item.hdurl} target="_blank">Download HD picture</a>
+      <a href={item.hdurl}>Download HD picture</a>
     </section>
   )
 }
