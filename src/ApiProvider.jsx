@@ -3,7 +3,7 @@ import { element } from 'prop-types'
 import { isEmpty } from 'lodash'
 import { format, subMonths } from 'date-fns'
 import { getApodDataSinceDate } from './helpers'
-import { db, initDB } from './helpers/db'
+import { db, bulkUpdate } from './helpers/db'
 
 ApiProvider.propTypes = {
   children: element.isRequired,
@@ -17,12 +17,10 @@ export function ApiProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (isEmpty(pictures)) initDatabase()
-  })
+    initDatabase()
+  }, [])
 
-  const getPictureByDate = date => {
-    return pictures.find(picture => picture.date === date)
-  }
+  const getPictureByDate = date => pictures.find(picture => picture.date === date)
 
   async function initDatabase() {
     const collection = await db.table('pictures').toCollection()
@@ -30,15 +28,16 @@ export function ApiProvider({ children }) {
     const lastPictureSaved = await collection.last(d => d)
 
     if (isEmpty(picturesInDB)) {
-      // If no data in DB, get all pictures of last 3 months
+    //   If no data in DB, get all pictures of last 3 months
       const defaultStartDate = format(subMonths(new Date(), 3), 'yyyy-M-d')
       const apodData = await getApodDataSinceDate(defaultStartDate)
-      await initDB(apodData)
+      await bulkUpdate(apodData)
     } else {
       const formattedToday = format(new Date(), 'yyyy-MM-d')
-      const dbIsUpToDate = getPictureByDate(formattedToday)
+      const dbIsUpToDate = Boolean(picturesInDB.find(picture => picture.date === formattedToday))
       if (!dbIsUpToDate) {
-        await getApodDataSinceDate(lastPictureSaved.date)
+        const newPictures = await getApodDataSinceDate(lastPictureSaved.date)
+        await bulkUpdate(newPictures)
       }
     }
 

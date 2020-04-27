@@ -14,12 +14,17 @@ export function Homepage() {
       <article>
         <figure>
           <img src={pictureOfTheDay.url} alt="" />
+          {pictureOfTheDay.copyright && (
+            <figcaption>
+              Copyright {pictureOfTheDay.copyright}
+            </figcaption>
+          )}
         </figure>
         <span>
           <h2>{pictureOfTheDay.title}</h2>
           <p>{pictureOfTheDay.explanation}</p>
           <p>
-            <a href={pictureOfTheDay.hdurl} target="_blank">Download HD picture</a>
+            <a href={pictureOfTheDay.hdurl}>Download HD picture</a>
           </p>
         </span>
       </article>

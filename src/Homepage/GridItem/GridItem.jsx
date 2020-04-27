@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { shape, string } from 'prop-types'
 import './GridItem.css'
 
 export function GridItem({ item }) {
@@ -13,4 +14,13 @@ export function GridItem({ item }) {
       </Link>
     </div>
   )
+}
+
+GridItem.propTypes = {
+  item: shape({
+    id: string,
+    date: string,
+    title: string,
+    url: string,
+  }),
 }

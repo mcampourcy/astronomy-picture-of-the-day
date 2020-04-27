@@ -6,7 +6,7 @@ db.version(1).stores({
   pictures: 'date, explanation, hdurl, media_type, title, url',
 })
 
-export async function initDB(data) {
+export async function bulkUpdate(data) {
   await db.pictures.bulkAdd(data)
     .catch(error => {
       console.error(error)

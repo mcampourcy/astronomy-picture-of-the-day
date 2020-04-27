@@ -16,6 +16,13 @@ export function Picture() {
       <img src={item.url} alt={item.title} />
       <h2>{item.title}</h2>
       <p>{item.explanation}</p>
+      {item.copyright && (
+        <p>
+          <small>
+            Copyright {item.copyright}
+          </small>
+        </p>
+      )}
       <a href={item.hdurl} target="_blank">Download HD picture</a>
     </section>
   )

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { element } from 'prop-types'
 
 export function App({ children }) {
   return (
@@ -14,4 +15,8 @@ export function App({ children }) {
       </main>
     </Fragment>
   )
+}
+
+App.propTypes = {
+  children: element,
 }
