@@ -4,7 +4,7 @@ Web application based on the Nasa API [Astronomy Picture Of The Day](https://api
 
 Build with React 16 and IndexedDB
 
-Demo here : [astronomypictureoftheday.space](http://astronomypictureoftheday.space)
+Demo here : [AstronomyPictureOfTheDay](http://mcampourcy.github.io/astronomy-picture-of-the-day)
 
 `npm install`  
 `npm run build`
