@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { element } from 'prop-types'
-import { isEmpty } from 'lodash'
+import { isEmpty, last } from 'lodash'
 import { format, subMonths } from 'date-fns'
 import { getApodDataSinceDate } from './helpers'
 import { db, bulkUpdate } from './helpers/db'
@@ -24,19 +24,24 @@ export function ApiProvider({ children }) {
 
   async function initDatabase() {
     const collection = await db.table('pictures').toCollection()
-    const picturesInDB = await collection.toArray()
-    const lastPictureSaved = await collection.last(d => d)
+    let picturesInDB = await collection.toArray()
+    let lastPictureSaved = await collection.last(d => d)
 
     if (isEmpty(picturesInDB)) {
-    //   If no data in DB, get all pictures of last 3 months
-      const defaultStartDate = format(subMonths(new Date(), 3), 'yyyy-M-d')
-      const apodData = await getApodDataSinceDate(defaultStartDate)
-      await bulkUpdate(apodData)
+      //   If no data in DB, get all pictures of the last month
+      const defaultStartDate = format(subMonths(new Date(), 1), 'yyyy-M-d')
+      picturesInDB = await getApodDataSinceDate(defaultStartDate)
+      lastPictureSaved = last(picturesInDB)
+
+      await bulkUpdate(picturesInDB)
     } else {
       const formattedToday = format(new Date(), 'yyyy-MM-d')
       const dbIsUpToDate = Boolean(picturesInDB.find(picture => picture.date === formattedToday))
+
       if (!dbIsUpToDate) {
         const newPictures = await getApodDataSinceDate(lastPictureSaved.date)
+        lastPictureSaved = last(newPictures)
+
         await bulkUpdate(newPictures)
       }
     }
