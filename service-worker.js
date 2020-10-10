@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/astronomy-picture-of-the-day/precache-manifest.cab6c28fc04e8ad16b481476f2b53b60.js"
+  "/astronomy-picture-of-the-day/precache-manifest.50a86c6c2ebade5f70fa7c69f7d7bf00.js"
 );
 
 self.addEventListener('message', (event) => {
