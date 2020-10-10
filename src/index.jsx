@@ -12,10 +12,10 @@ ReactDOM.render(
     <ApiProvider>
       <App>
         <Switch>
-          <Route exact path="/">
+          <Route path={['/', '/astronomy-picture-of-the-day']} exact sensitive>
             <Homepage />
           </Route>
-          <Route exact path="/:date/:id">
+          <Route path="/:date/:id" exact>
             <Picture />
           </Route>
         </Switch>
