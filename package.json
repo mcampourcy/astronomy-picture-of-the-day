@@ -1,21 +1,23 @@
 {
-  "name": "AstronomyPictureOfTheDay",
+  "name": "astronomy-picture-of-the-day",
   "author": "mcampourcy",
   "version": "3.0.0",
   "description": "Simple Website based on NASA Api",
   "main": "server.js",
   "private": true,
   "dependencies": {
-    "date-fns": "^2.12.0",
-    "dexie": "^2.0.4",
+    "date-fns": "^2.16.1",
+    "dexie": "^3.0.2",
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.15",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-feather": "^2.0.4",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1"
+    "react-feather": "^2.0.8",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,12 +28,12 @@
     "stylelint": "stylelint '**/*.css'"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "stylelint": "^13.3.3",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "stylelint": "^13.7.2",
     "stylelint-a11y": "^1.2.3"
   },
   "browserslist": {

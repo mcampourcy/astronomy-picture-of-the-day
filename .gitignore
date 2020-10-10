@@ -4,7 +4,6 @@
 # misc
 .idea
 /.env.prod
-/.env
 /public/main.*
 
 # packages
