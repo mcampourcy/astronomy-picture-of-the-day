@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ApiProvider } from './ApiProvider'
 import { App } from './App'
@@ -7,7 +7,10 @@ import { Homepage } from './Homepage'
 import { Picture } from './Picture'
 import './index.css'
 
-ReactDOM.render(
+
+const container = document.getElementById('app')
+const root = createRoot(container)
+root.render(
   <Router>
     <ApiProvider>
       <App>
@@ -21,6 +24,5 @@ ReactDOM.render(
         </Switch>
       </App>
     </ApiProvider>
-  </Router>,
-  document.getElementById('root'),
+  </Router>
 )
