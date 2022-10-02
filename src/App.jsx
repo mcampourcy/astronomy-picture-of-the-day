@@ -1,22 +1,17 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
-import { element } from 'prop-types'
+import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
-export function App({ children }) {
+export function App() {
   return (
-    <Fragment>
+    <>
       <header>
         <Link to="/">
           <h1>Astronomy Picture of the Day</h1>
         </Link>
       </header>
       <main>
-        {children}
+        <Outlet />
       </main>
-    </Fragment>
+    </>
   )
-}
-
-App.propTypes = {
-  children: element,
 }

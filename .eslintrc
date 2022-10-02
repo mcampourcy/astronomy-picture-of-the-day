@@ -1,5 +1,8 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
   "plugins": [
     "import",
     "jsx-a11y",
@@ -11,8 +14,6 @@
     "jest": true
   },
   "rules": {
-    "arrow-parens": ["error", "as-needed"],
-    "comma-dangle": ["error", "always-multiline"],
     "import/no-cycle": "error",
     "import/prefer-default-export": "off",
     "max-len": [
@@ -21,14 +22,12 @@
       2
     ],
     "no-use-before-define": ["error", { "functions": false }],
-    "no-console": ["error", {
-      "allow": ["info", "warn", "error"]
-    }],
+    "no-console": "off",
     "object-curly-newline": "off",
     "react/prefer-stateless-function": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-fragments": [2, "element"],
+    "react/jsx-fragments": "error",
     "react/jsx-one-expression-per-line": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
