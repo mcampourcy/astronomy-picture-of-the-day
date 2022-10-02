@@ -1,18 +1,11 @@
 {
   "files": {
-    "main.css": "/astronomy-picture-of-the-day/static/css/main.89164155.chunk.css",
-    "main.js": "/astronomy-picture-of-the-day/static/js/main.5ea241d4.chunk.js",
-    "runtime-main.js": "/astronomy-picture-of-the-day/static/js/runtime-main.d5796d24.js",
-    "static/js/2.7dfe1164.chunk.js": "/astronomy-picture-of-the-day/static/js/2.7dfe1164.chunk.js",
-    "index.html": "/astronomy-picture-of-the-day/index.html",
-    "precache-manifest.50a86c6c2ebade5f70fa7c69f7d7bf00.js": "/astronomy-picture-of-the-day/precache-manifest.50a86c6c2ebade5f70fa7c69f7d7bf00.js",
-    "service-worker.js": "/astronomy-picture-of-the-day/service-worker.js",
-    "static/js/2.7dfe1164.chunk.js.LICENSE.txt": "/astronomy-picture-of-the-day/static/js/2.7dfe1164.chunk.js.LICENSE.txt"
+    "main.css": "/astronomy-picture-of-the-day/static/css/main.84cd9eb9.css",
+    "main.js": "/astronomy-picture-of-the-day/static/js/main.83c55d36.js",
+    "index.html": "/astronomy-picture-of-the-day/index.html"
   },
   "entrypoints": [
-    "static/js/runtime-main.d5796d24.js",
-    "static/js/2.7dfe1164.chunk.js",
-    "static/css/main.89164155.chunk.css",
-    "static/js/main.5ea241d4.chunk.js"
+    "static/css/main.84cd9eb9.css",
+    "static/js/main.83c55d36.js"
   ]
 }
