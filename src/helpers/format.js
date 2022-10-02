@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 export const slugify = str => {
   let slug = String(str)
     .toString()
